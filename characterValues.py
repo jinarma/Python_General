@@ -1,4 +1,4 @@
-# This program illustrates that apart from int 0, float 0.0 and string ''; every other value evaluates to True
+# This program illustrates that apart from int 0, float 0.0 and string ''; every other value evaluates to True.
 name = ''
 while not name:
 	name = input('Enter your name: ')
