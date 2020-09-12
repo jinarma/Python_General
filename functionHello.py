@@ -1,7 +1,7 @@
 def hello():
-	print("Howdy!")
-	print("Howdy!!!")
-	print("Hello there!")
+	print("Howdy!", end = ' | \n')
+	print("Howdy!!!", end = ' | \n')
+	print("Hello there!", end = ' | \n')
 
 hello()
 hello()
