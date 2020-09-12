@@ -1,7 +1,5 @@
 def hello():
-	print("Howdy!", end = ' | \n')
-	print("Howdy!!!", end = ' | \n')
-	print("Hello there!", end = ' | \n')
+	print("Howdy!", "Howdy!!!", "Hello there!", sep = '\n')
 
 hello()
 hello()
