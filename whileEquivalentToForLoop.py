@@ -5,4 +5,4 @@ for i in range (1, 11):
 		continue
 	elif i>7:
 		break
-	print("Jinu ("+str(i)+")")
+	print("Jinu --> ("+str(i)+")")
