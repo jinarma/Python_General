@@ -1,1 +1,1 @@
-print("Is git verified for this program?")
+print("Lets try again.")
