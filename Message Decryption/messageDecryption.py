@@ -55,5 +55,9 @@ def endResult(encryptedString):
 	decryptedString=lettersPart(digitsDoneString)
 	return decryptedString
 
-encryptedString = input()
-print(endResult(encryptedString))
+messageFile = open(r"Encrypted_Message.txt", "r")
+decryptedMessageFile = open("Decrypted_Message.txt", "w")
+encryptedString = messageFile.read()
+decryptedMessageFile.write(endResult(encryptedString))
+decryptedMessageFile.close()
+messageFile.close()
