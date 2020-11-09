@@ -32,7 +32,7 @@ def digitsPart(string):
 		string+=i
 
 	#print(string)
-	#return string
+	return string
 
 def lettersPart(string):
 	listLetters = []
@@ -43,19 +43,27 @@ def lettersPart(string):
 	listLength = len(listLetters)
 	while i < listLength:
 		if listLetters[i].islower() == True:
-			print(listLetters[i])
+			#print(listLetters[i])
 			try:
 				listLetters[i], listLetters[i+1] = listLetters[i+1], listLetters[i]
-				print(listLetters)
+				listLetters.insert(i+1, "*")
+				#print(listLetters)
+				i+=2
 			except IndexError:
 				break
 		i+=1
 	#print(listLetters)
+	string=''
+	for i in listLetters:
+		string+=i
+	return string
 
 def endResult(string):
-	print("3")
+	numberEncryption = digitsPart(string)
+	encryptedString = lettersPart(numberEncryption)
+	return encryptedString
 
 string = input()
-lettersPart(string)
+#lettersPart(string)
 #digitsPart(string)
-#print(endResult(string))
+print(endResult(string))
