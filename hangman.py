@@ -1,22 +1,23 @@
 import os
 
 def gameLogic(name):
-	pseudoString=''
-	test=0
-	length=len(name)
-	oneCharacter=input()
-	numberOfChoices=3
-	for i in range(0, length):
-		if oneCharacter==name[i]:
-			print(oneCharacter, end='')
-			pseudoString=pseudoString[ : i]+oneCharacter
-		else:
-			print("*", end='')
-			test=test+1
-		if test==length:
-			print('Wrong guess!\nYou have '+str(numberOfChoices)+' choices left.')
-			numberOfChoices=numberOfChoices-1
-	print('\n'+pseudoString)
+	movieNameList = []
+	hiddenMovieNameList = []
+	for i in name:
+		movieNameList.append(i)
+		hiddenMovieNameList.append('*')
+	print(hiddenMovieNameList)
+	i=0
+	while i < 3:
+		checkChar = input("\nEnter a letter")
+		for j in range(len(movieNameList)):
+			if checkChar == movieNameList[j]:
+				print('x'*(j)+checkChar+(len(movieNameList)-(j-1))*'x', end='')
+				
+			else:
+				i+=1
+
+
 movieName=input("Enter the name of a movie: ")
 os.system('cls')
 print("Guess the letters of the movie!")
