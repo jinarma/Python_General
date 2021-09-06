@@ -1,42 +1,11 @@
-#Program to capitalize the specific word
+def combine_guests(guests1, guests2):
+	# Combine both dictionaries into one, with each key listed 
+	# only once, and the value from guests1 taking precedence
+	#for i in range(len(guests))
+	guests1[guests2.keys] = guests2.values
+	return guests1
 
-def highlight_word(sentence, word):
-	count=0
-	special_char_list = [',', "'", '"', ':', ';', '/', '?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|']
-	list_1 = sentence.split()
-	for i in range(len(list_1)):
-		if list_1[i] == word:
-			list_1[i] = word.upper()
-			count=1
-	if list_1[-1] != word and count == 0:
-		for i in range(len(list_1)):
-			list_2 = list(list_1[i])
-			temp_word = ""
-			for character in special_char_list:
-				try:
-					list_2.remove(character)
-					print("inside try")
-				except ValueError:
-					continue
-			for j in range(len(list_2)): #this creates a temp word from the elements in list_2
-				temp_word+=list_2[j]
-			new_word_list = []
-			if temp_word == word:
-				word = word.upper()
-				new_word_list = list(word)
-				list_2 = new_word_list
-			print(list(list_2), i, sep=" ")
-		print(list_2)
-		print(list_1)
-				# for checker_character in special_char_list:
-				# 	try:
-				# 		list_1[i][j].remove(checker_character)
-				# 	except ValueError:
-				# 		continue
-			#convert list to string and check if it is = "word"
-		# print(list_1[j])
-#	return list_1
+Rorys_guests = { "Adam":2, "Brenda":3, "David":1, "Jose":3, "Charlotte":2, "Terry":1, "Robert":4}
+Taylors_guests = { "David":4, "Nancy":1, "Robert":2, "Adam":1, "Samantha":3, "Chris":5}
 
-#print(highlight_word("Have a nice day", "nice"))
-print(highlight_word("Shhh, don't be so loud!", "loud"))
-#print(highlight_word("Automating with Python is fun", "fun"))
+print(combine_guests(Rorys_guests, Taylors_guests))
