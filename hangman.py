@@ -7,6 +7,7 @@ def gameLogic(name):
 		movieNameList.append(i)
 		hiddenMovieNameList.append('*')
 	#print(hiddenMovieNameList)
+	#basic test for signing
 	i=0
 	while i < 3:
 		checkChar = input("\nEnter a letter")
