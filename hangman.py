@@ -6,7 +6,7 @@ def gameLogic(name):
 	for i in name:
 		movieNameList.append(i)
 		hiddenMovieNameList.append('*')
-	print(hiddenMovieNameList)
+	#print(hiddenMovieNameList)
 	i=0
 	while i < 3:
 		checkChar = input("\nEnter a letter")
