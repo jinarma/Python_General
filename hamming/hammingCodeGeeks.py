@@ -16,7 +16,6 @@ def calcRedundantBits(m):
 
 
 def posRedundantBits(data, r):
-
 	# Redundancy bits are placed at the positions
 	# which correspond to the power of 2.
 	j = 0
@@ -73,7 +72,7 @@ def detectError(arr, nr):
 		for j in range(1, n + 1):
 			if(j & (2**i) == (2**i)):
 				val = val ^ int(arr[-j])
-				print('val', val)
+				# print('val', val)
 
 		# Create a binary no by appending
 		# parity bits together.
