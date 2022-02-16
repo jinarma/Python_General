@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from math import ceil
 
 
@@ -30,3 +31,15 @@ ls1 = ['mysore', 'bangalore']
 ls1.sort()
 print(ls1)
 print(ceil(9/4))
+=======
+from pynput import mouse
+
+def on_move(x, y):
+	print(x, y)
+def on_click(x, y, button, pressed):
+	if pressed:
+		return False
+
+with mouse.Listener(on_move=on_move, on_click=on_click) as listener:
+	listener.join()
+>>>>>>> 3a759acdeba106bff6b6b461f347318714bd7b22
