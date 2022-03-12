@@ -1,7 +1,7 @@
 class Node:
 	def __init__(self, data = None, previous_node_address = None):
 		if previous_node_address is None and data is None:
-			self.genesis_node = Node(None, None)
+			self.genesis_node = Node(None, 0)
 		self.data = data
 		self.previous_node_address = previous_node_address
 	
