@@ -1,0 +1,5 @@
+import string
+
+
+string1 = '8BA55E21572928EAF5CCB406152BAD92D4925C212ADCE36AFBEF123419DD65D2'
+print(string1.casefold())
