@@ -1,3 +1,3 @@
 string = "JinuSharma"
-print(string[2:19])
+print(string[0:3])
 print(len(string[2:19]))
