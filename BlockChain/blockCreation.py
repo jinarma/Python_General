@@ -46,7 +46,6 @@ print(f'size of Blockchain - {test_block.size_of_chain()}')
 # print(genesis_Block.prev_hash)
 # print(block_1.prev_hash)
 # print(block_2.prev_hash)
-# print(block_3.prev_hash)
 # # print(sha256('0'.encode()).hexdigest())
 
 # # print(f'genesis_block.prev_hash {genesis_Block.prev_hash}, genesis_Block.txn {genesis_Block.txn}, genesis_Block.timestamp {genesis_Block.timestamp}, genesis_Block.number {genesis_Block.number}')
