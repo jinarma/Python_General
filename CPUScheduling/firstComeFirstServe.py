@@ -1,12 +1,15 @@
 def FCFS(process_list: list) -> list:
 	process_list = sorted(process_list)		# [at, bt]
 	processed_list = []		# [ct, tat, wt]
-	buff_point = process_list[0][0]
+	buff_point = 0
 	for i, ele in enumerate(process_list):
-		processed_list.append([buff_point+process_list[i][1]])
-		buff_point += process_list[i][1]
-		processed_list[i].append(processed_list[i][0]-process_list[i][0])
-		processed_list[i].append(processed_list[i][1]-process_list[i][1])
+		if buff_point >= ele[0]:
+			buff_point += ele[1]
+		else:
+			buff_point = ele[1]+ele[0]
+		processed_list.append([buff_point])
+		processed_list[i].append(processed_list[i][0]-ele[0])
+		processed_list[i].append(processed_list[i][1]-ele[1])
 	return processed_list
 
 # Driver
