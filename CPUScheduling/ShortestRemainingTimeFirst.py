@@ -30,7 +30,7 @@ def SRTF(process_list):
 
 		try:
 			current_process.append(ready_queue.pop(0))
-			print(i, current_process)
+			print(i, f'P{current_process[0][0]}')
 			current_process[0][2] -= 1
 			if current_process[0][2] <= 0:
 				current_process.pop()
