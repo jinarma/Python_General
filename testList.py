@@ -1,4 +1,3 @@
-a = 5
+a = ['hellow', 99, '123']
 print(a)
-b = list(a)
-print(b)
+print(a.sort())
