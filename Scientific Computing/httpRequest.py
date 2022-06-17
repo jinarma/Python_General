@@ -7,8 +7,8 @@ cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\n\n'.encode()
 mysock.send(cmd)
 
 while True:
-	data = mysock.recv(512)
+	data = mysock.recv(8)
 	if len(data) < 1:
 		break
-	print(data.decode())
+	print(data.decode(), end='')
 mysock.close()
