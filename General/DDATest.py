@@ -22,13 +22,13 @@ def DDA(x0, y0, x1, y1):
 	x_coorinates = []
 	y_coorinates = []
 
-	x_inc = 1 if dx > 1 else -1
-	y_inc = 1 if dy > 1 else -1
+	x_inc = 1 if dx >= 0 else -1
+	y_inc = 1 if dy >= 0 else -1
 
 	for _ in range(steps+1):
 		# append the x,y coordinates in respective list
-		x_coorinates.append(x)
-		y_coorinates.append(y)
+		x_coorinates.append(round(x))
+		y_coorinates.append(round(y))
 
 		# case when slope is negative and moving towards zero
 		if slope >= -1 and slope <= 0:
@@ -63,8 +63,8 @@ def DDA(x0, y0, x1, y1):
 if __name__ == "__main__":
 
 	# coordinates of 1st point
-	x0, y0 = 4, 13
+	x0, y0 = 8, 13
 
 	# coordinates of 2nd point
-	x1, y1 = 9, 6
+	x1, y1 = 4, 6
 	DDA(x0, y0, x1, y1)
