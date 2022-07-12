@@ -3,6 +3,7 @@ def getMajorityElement(num_list):
 	occurance = {}
 	count = 0
 	for ele in num_list:
+		pass
 		
 		
 
