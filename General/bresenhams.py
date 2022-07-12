@@ -1,5 +1,5 @@
-x1, y1 = 5, 5
-x2, y2 = 13, 9
+x1, y1 = 7, 8
+x2, y2 = 1, 18
 
 dx = abs(x2-x1)
 dy = abs(y2-y1)
@@ -10,7 +10,7 @@ x = x1
 y = y1
 
 print(f'({x}, {y})')
-while x != x2 or y != y2:
+while x <= x2 or y <= y2:
 
 	if error >= 0:
 		x += 1
