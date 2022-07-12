@@ -1,0 +1,1 @@
+This text document is going to be used for checking whether the GET function in PY works on a really basic webpage for data retrieval or not.
