@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup
 import urllib.request, urllib.parse, urllib.error
 
 url = input('Enter - ')
-html = urllib.request.urlopen(url)
+html = urllib.request.urlopen(url).read()
+print(html.decode())
 soup = BeautifulSoup(html, 'html.parser')
 
 tags = soup('a')
