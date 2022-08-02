@@ -1,0 +1,50 @@
+{
+	"results": [
+		{
+			"address_components": [
+				{
+					"long_name": "Jammu",
+					"short_name": "Jammu",
+					"types": [
+						"locality",
+						"political"
+					]
+				}
+			],
+			"formatted_address": "Jammu",
+			"geometry": {
+				"bounds": {
+					"northeast": {
+						"lat": 32.81232970000001,
+						"lng": 74.964197
+					},
+					"southwest": {
+						"lat": 32.6170187,
+						"lng": 74.755731
+					}
+				},
+				"location": {
+					"lat": 32.7266016,
+					"lng": 74.8570259
+				},
+				"location_type": "APPROXIMATE",
+				"viewport": {
+					"northeast": {
+						"lat": 32.81232970000001,
+						"lng": 74.964197
+					},
+					"southwest": {
+						"lat": 32.6170187,
+						"lng": 74.755731
+					}
+				}
+			},
+			"place_id": "ChIJJTWdFr-EHjkRjf247og0Iw8",
+			"types": [
+				"locality",
+				"political"
+			]
+		}
+	],
+	"status": "OK"
+}

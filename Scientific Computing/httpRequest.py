@@ -19,9 +19,15 @@ def socket_request(url, port, page):
 		print(error)
 
 def urllib_request(url):
-	fhand = urllib.request.urlopen(url)
-	for line in fhand:
+
+	# retrieves headers
+	data = urllib.request.urlopen(url)
+	headers = data.getheaders()
+	for ele in headers:
+		print(ele[0], ' - ', ele[1])
+
+	for line in data:
 		print(line.decode().strip())
 
-socket_request('data.pr4e.org', 80, 'romeo.txt')
-# urllib_request('http://data.pr4e.org/romeo.txt')
+# socket_request('data.pr4e.org', 80, 'romeo.txt')
+urllib_request('http://data.pr4e.org/romeo.txt')
