@@ -11,7 +11,10 @@ def add_time(start, duration, day=None):
 	new_hours = (new_time//60)
 	new_minutes = new_time%60
 	total_days = new_hours//24
-	new_hours_string = str(new_hours)
+	if new_hours%12 == 0:
+		new_hours_string = str('12')
+	else:
+		new_hours_string = str(new_hours%12)
 	if new_minutes < 10:
 		new_minutes_string = '0'+str(new_minutes)
 	else:
@@ -41,9 +44,11 @@ def add_time(start, duration, day=None):
 			5:'friday',
 			6:'saturday'
 			}
-		total_days += list(week.values()).index(day.casefold())
-		total_days %= 7
-		day = week[total_days]
+		temp_total_days = 0
+		temp_total_days += list(week.values()).index(day.casefold())
+		temp_total_days += total_days
+		temp_total_days %= 7
+		day = week[temp_total_days]
 		if new_hours % 24 >= 12:
 			if total_days == 0:
 				new_time = f'{new_hours_string}:{new_minutes_string} PM, {day.capitalize()}'
@@ -62,4 +67,4 @@ def add_time(start, duration, day=None):
 	return new_time
 
 
-print(add_time("2:59 AM", "24:00", "saturDay"))
+print(add_time("11:59 PM", "24:05", "Wednesday"))
