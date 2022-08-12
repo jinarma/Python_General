@@ -1,7 +1,11 @@
 class Category:
+
+	categories = []
+
 	def __init__(self, category: str):
 		self.ledger = []
 		self.category = category
+		Category.categories.append(self)
 
 	def __str__(self):
 		self.string = ''
@@ -43,8 +47,20 @@ class Category:
 		else:
 			return True
 
-def create_spend_chart(categories):
-	pass
+def create_spend_chart(categories: list[Category]):
+	num_list = []
+	for category in categories:
+		temp_sum = 0
+		for transaction in category.ledger:
+			if float(transaction['amount']) < 0:
+				temp_sum += abs(float(transaction['amount']))
+		num_list.append(temp_sum)
+	
+	num_list.append(sum(num_list))
+
+	for i in range(len(num_list)-1):
+		num_list[i] = num_list[i]/num_list[-1]
+		
 
 food = Category('food')
 print(food.category)
@@ -65,3 +81,7 @@ print(food.get_balance())
 print(clothing.get_balance())
 # print(food.__dir__())
 print(food)
+for ele in Category.categories:
+	print(ele.category)
+
+create_spend_chart(Category.categories)
