@@ -3,7 +3,7 @@ class Category:
 	categories = []
 	names = []
 
-	def __init__(self, category: str):
+	def __init__(self, category):
 		self.ledger = []
 		self.category = category.capitalize()
 		Category.names.append(self.category)
@@ -13,10 +13,13 @@ class Category:
 		self.string = ''
 		self.string += ''.join(self.category.center(30,'*'))
 		self.string += '\n'
+		total = 0
 		for ele in self.ledger:
-			self.string += ''.join(str(ele['description']).ljust(23, ' '))
+			self.string += ''.join(str(ele['description'][:23]).ljust(23, ' '))
 			self.string += ''.join('{:.2f}'.format(ele['amount']).rjust(7, ' '))
 			self.string += '\n'
+			total += ele['amount']
+		self.string += f'Total: {total}'
 		return self.string
 
 	def deposit(self, amount, description=''):
@@ -49,13 +52,18 @@ class Category:
 		else:
 			return True
 
-def create_spend_chart(categories: list[Category]):
+def create_spend_chart(categories):
 	num_list = []
-	res = max(list(map(len, Category.names)))
+	maximum = 0
+	for ele in categories:
+		if len(ele.category) > maximum:
+			maximum = len(ele.category)
+	
 	temp_names = []
+	result = 'Percentage spent by category\n'
 
-	for ele in Category.names:
-		temp_names.append(list(ele.ljust(res, ' ')))
+	for ele in categories:
+		temp_names.append(list(ele.category.ljust(maximum, ' ')))
 
 	for category in categories:
 		temp_sum = 0
@@ -67,67 +75,58 @@ def create_spend_chart(categories: list[Category]):
 	num_list.append(sum(num_list))
 
 	for i in range(len(num_list)-1):
-		num_list[i] = round((num_list[i]/num_list[-1])*10)
+		num_list[i] = int((num_list[i]/num_list[-1])*10)
 	num_list.pop()
 
 	dot_list = []
 	for ele in num_list:
 		temp_str = 'o'*(ele+1)
-		# dot_list.append(list(temp_str))
 		dot_list.append(list(temp_str.ljust(11, ' ')))
 
 	if len(num_list) == 0:
 		for i in range(10, -1, -1):
-			print(f'{str(i*10).rjust(3)}| ')
+			result += (f'{str(i*10).rjust(3)}| ')
 	if len(num_list) == 1:
 		for i in range(10, -1, -1):
-			print(f'{str(i*10).rjust(3)}| {dot_list[0][i]}  ')
+			result += (f'{str(i*10).rjust(3)}| {dot_list[0][i]}  \n')
 	if len(num_list) == 2:
 		for i in range(10, -1, -1):
-			print(f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}')
+			result += (f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}  \n')
 	if len(num_list) == 3:
 		for i in range(10, -1, -1):
-			print(f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}  {dot_list[2][i]}')
+			result += (f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}  {dot_list[2][i]}  \n')
 	if len(num_list) == 4:
 		for i in range(10, -1, -1):
-			print(f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}  {dot_list[2][i]}  {dot_list[3][i]}')
-	print((' '*4).ljust((5+len(num_list)*3), '-'))
-	for i in range(res):
-		print(' '*5, end='')
+			result += (f'{str(i*10).rjust(3)}| {dot_list[0][i]}  {dot_list[1][i]}  {dot_list[2][i]}  {dot_list[3][i]}  \n')
+	result += ((' '*4).ljust((5+len(num_list)*3), '-'))+'\n'
+	for i in range(maximum):
+		result += ' '*5
 		if len(num_list) >= 1:
-			print(temp_names[0][i], end='  ')
+			result += temp_names[0][i]+'  '
 		if len(num_list) >= 2:
-			print(temp_names[1][i], end='  ')
+			result += temp_names[1][i]+'  '
 		if len(num_list) >= 3:
-			print(temp_names[2][i], end='  ')
+			result += temp_names[2][i]+'  '
 		if len(num_list) >= 4:
-			print(temp_names[3][i], end='  ')
-		print()
+			result += temp_names[3][i]+'  '
+		if i != maximum-1:
+			result += '\n'
+	
+	return result
 
 
-food = Category('food')
-food.category
-food.deposit(20, 'something')
-food.deposit(10, 'some')
-food.deposit(30)
-food.ledger
-food.withdraw(69)
-food.ledger
-food.category
-clothing = Category('clothing')
-clothing.category
-clothing.deposit(150, 'dui')
-clothing.withdraw(20)
-food.get_balance()
-clothing.get_balance()
-food.transfer(40, clothing)
-food.get_balance()
-clothing.get_balance()
-# food.__dir__()
-print(food)
-print(clothing)
-for ele in Category.categories:
-	print(ele.category)
+food = Category('Food')
+entertainment = Category('entertainment')
+business = Category('business')
+food.deposit(900, 'deposit')
+entertainment.deposit(900, 'deposit')
+business.deposit(900, 'deposit')
+food.withdraw(105.55)
+entertainment.withdraw(33.40)
+business.withdraw(10.99)
+# print([business, food, entertainment])
+print(create_spend_chart([business, food, entertainment]))
+fhand = open(r"D:\Programming\Python\Python_General\Scientific Computing\Projects\text.txt", 'a')
+fhand.write(create_spend_chart([business, food, entertainment]))
+fhand.close()
 
-create_spend_chart(Category.categories)
-print('yo', Category.names)
