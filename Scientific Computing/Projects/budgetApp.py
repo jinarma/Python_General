@@ -126,7 +126,4 @@ entertainment.withdraw(33.40)
 business.withdraw(10.99)
 # print([business, food, entertainment])
 print(create_spend_chart([business, food, entertainment]))
-fhand = open(r"D:\Programming\Python\Python_General\Scientific Computing\Projects\text.txt", 'a')
-fhand.write(create_spend_chart([business, food, entertainment]))
-fhand.close()
 
