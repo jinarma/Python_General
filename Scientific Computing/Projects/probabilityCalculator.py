@@ -7,47 +7,17 @@ class Hat:
 	
 	def __init__(self, *args, **kwargs):
 		self.contents = []
+		print(kwargs)
 		for key, value in kwargs.items():
-			while kwargs[key] != 0:
-				self.contents.append(key)
-				kwargs[key] -= 1
+			self.contents += ([key]*value)
 		# print(self.contents)
-
+		
 	def draw(self, removed):
 		if removed > len(self.contents):
 			return self.contents
 		else:
-			removals = []
-			while removed:
-				temp = random.randint(0, len(self.contents)-1)
-				if temp not in removals:
-					removals.append(temp)
-					removed -= 1
-				else:
-					continue
-		# print(removals)
-		# temp = copy.copy(self.contents)
-		res = []
-		temp_contents = []
-		for i, ele in enumerate(self.contents):
-			if i in removals:
-				res.insert(0, ele)
-			else:
-				temp_contents.append(ele)
-
-
-		# print(self.contents)
-		# print(res)
-
-		# res_dict = dict()
-		# for ele in res:
-		# 	if ele not in res_dict:
-		# 		res_dict[ele] = 1
-		# 	else:
-		# 		res_dict[ele] += 1
-
-		self.contents = temp_contents
-		return res
+			res = 0
+			return res
 
 
 
@@ -75,7 +45,7 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 	# print(m)
 	return m/n
 
-random.seed(95)
+# random.seed(95)
 hat = Hat(blue=3, red=2, green=6)
 # print(hat.draw(3))
-print(experiment(hat, {'blue':2, 'green':1}, 4, 1000))
+# print(experiment(hat, {'blue':2, 'green':1}, 4, 1000))
